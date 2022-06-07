@@ -1,0 +1,27 @@
+package com.adoteumpet.email.controllers;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.adoteumpet.email.dtos.EmailDto;
+import com.adoteumpet.email.services.EmailService;
+
+@RestController
+@RequestMapping("/email")
+public class EmailController {
+
+	@Autowired
+	EmailService service;
+
+	@PostMapping(value = "/enviar")
+	public ResponseEntity<EmailDto> enviarEmail(@RequestBody @Valid EmailDto emailDto) {
+		return ResponseEntity.ok().body(service.enviarEmail(emailDto));
+	}
+
+}
