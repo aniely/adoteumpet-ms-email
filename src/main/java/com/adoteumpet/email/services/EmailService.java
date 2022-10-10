@@ -31,21 +31,22 @@ public class EmailService {
 	}
 	
 	public EmailDto enviarEmail(EmailDto dto) {
+		SimpleMailMessage message = new SimpleMailMessage();
 		Email email = mapper.toEntity(dto, new Email());
 		email.setDataEnvio(LocalDateTime.now());
 		try {
-			SimpleMailMessage message = new SimpleMailMessage();
 			message.setFrom(email.getEmailDe());
 			message.setTo(email.getEmailPara());
 			message.setSubject(email.getAssunto());
 			message.setText(email.getTexto());
-			emailSender.send(message);
+			
 
 			email.setStatusEmail(StatusEmail.ENVIADO);
 		} catch (MailException e) {
 			email.setStatusEmail(StatusEmail.ERRO);
 		} finally {
-			email = repository.save(email);
+		//	email = repository.save(email);
+			emailSender.send(message);
 		}
 		return mapper.toDTO(email);
 	}

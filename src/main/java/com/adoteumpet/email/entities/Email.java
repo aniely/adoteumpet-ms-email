@@ -22,6 +22,7 @@ public class Email implements Serializable  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	//private UUID id;
 	private String  usuarioRef;
 	private String emailDe;
 	private String emailPara;
