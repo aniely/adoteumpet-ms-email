@@ -17,14 +17,14 @@ import com.adoteumpet.email.repositories.EmailRepository;
 @Service
 public class EmailService {
 
-	private EmailRepository repository;
+//	private EmailRepository repository;
 	private	EmailMapper mapper;
 	private JavaMailSender emailSender;
 
 	
 	@Autowired
-	public EmailService(EmailRepository repository, EmailMapper mapper,JavaMailSender emailSender) {
-		this.repository = repository;
+	public EmailService(EmailMapper mapper,JavaMailSender emailSender) {
+		//this.repository = repository;
         this.mapper = mapper;
         this.emailSender = emailSender;
        

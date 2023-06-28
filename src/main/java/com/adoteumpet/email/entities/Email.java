@@ -13,8 +13,8 @@ import javax.persistence.Table;
 import com.adoteumpet.email.enums.StatusEmail;
 
  
-@Entity
-@Table(name = Email.TABLE_NAME)
+//@Entity
+//@Table(name = Email.TABLE_NAME)
 public class Email implements Serializable  {
     public static final String TABLE_NAME = "tb_email";
 	private static final long serialVersionUID = 1L;
